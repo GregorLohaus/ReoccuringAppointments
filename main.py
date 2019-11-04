@@ -72,4 +72,4 @@ def getDates(sM,  nD,  xDay,         nM,  nY,  ys):
                             dates_out.append(time.strftime('%a, %d.%m.%Y', time.strptime(str(b)+str(i),'%j%Y')))
     return dates_out
 
-print(getDates(3, 3, 'Tuesday', 2,2,3))
+#print(getDates(3, 3, 'Tuesday', 2,2,3))
