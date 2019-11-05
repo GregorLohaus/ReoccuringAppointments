@@ -20,19 +20,17 @@ def getWeekday(d,y):
 def isNthWeekdayOfMonth(n,m,d,y): # m -> '01' - '12'
     mA = [] #array von allen tagen des monats nach der struktur [[Monday, 001],[Tuesday, 002]]
     if m in ['01','03','05','07','08','10','12']:
-        for i in range(1,32):
-                mA.append([time.strftime('%A', time.strptime(str(i).zfill(2)+m+str(y),'%d%m%Y')),time.strftime('%j', time.strptime(str(i).zfill(2)+m+str(y),'%d%m%Y'))])
+        x = 32
     elif m == '02':
         if isSJ(y):
-            for i in range(1,30):
-                mA.append([time.strftime('%A', time.strptime(str(i).zfill(2)+m+str(y),'%d%m%Y')),time.strftime('%j', time.strptime(str(i).zfill(2)+m+str(y),'%d%m%Y'))])
+            x = 30
         else:
-            for i in range(1,29):
-                mA.append([time.strftime('%A', time.strptime(str(i).zfill(2)+m+str(y),'%d%m%Y')),time.strftime('%j', time.strptime(str(i).zfill(2)+m+str(y),'%d%m%Y'))])
+            x = 29
     else:
-        for i in range(1,31):
-            mA.append([time.strftime('%A', time.strptime(str(i).zfill(2)+m+str(y),'%d%m%Y')),time.strftime('%j', time.strptime(str(i).zfill(2)+m+str(y),'%d%m%Y'))])
-
+        x = 31
+    for i in range(1,x):
+        mA.append([time.strftime('%A', time.strptime(str(i).zfill(2)+m+str(y),'%d%m%Y')),time.strftime('%j', time.strptime(str(i).zfill(2)+m+str(y),'%d%m%Y'))])
+        
     wD = getWeekday(str(d).zfill(3),y) #zfill füllt eine nummer die durch einen string repräsentiert wird mit nullen auf '1'.zfill(2) -> '01'
     wDC = 0 #zähler
     for i in range(len(mA)):
