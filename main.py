@@ -55,14 +55,10 @@ def getDates(sM,  nD,  xDay,         nM,  nY,  ys):
     dates_out = []
     for i in range (cY, cY+ys+1, nY):
         if isSJ(i):
-            for b in range(1,367):
-                if isNMonth(sM, nM, b, i):
-                    sM = 1
-                    if getWeekday(str(b).zfill(3),i) == xDay:
-                        if isNthWeekdayOfMonth(nD,time.strftime('%m', time.strptime(str(b)+str(i),'%j%Y')),b,i):
-                            dates_out.append(time.strftime('%a, %d.%m.%Y', time.strptime(str(b)+str(i),'%j%Y')))
+            x = 367
         else:
-            for b in range(1,366):
+            x = 366
+        for b in range(1,x):
                 if isNMonth(sM, nM, b, i):
                     sM = 1
                     if getWeekday(str(b).zfill(3),i) == xDay:
